@@ -1,3 +1,5 @@
+# This is a renpy file. I can modify and re-distribute this under their own license.
+
 # console.rpy
 # Ren'Py console
 # Copyright (C) 2012-2017 Shiz, C, delta, PyTom

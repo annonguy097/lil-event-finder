@@ -1,3 +1,6 @@
+# This might break the rules of the LIL-Discord so be wary. No one is allowed to upload or post the game anywhere and I assume this also counts game files.0
+# This is not meant to re-distribute the game in any way it is only meant to modify the script for faster content viewage.
+# I DO NOT CLAIM OWNERSHIP OF THE FOLLOWING WORK
 label amiheadpat:
     $ sessionpats = 0
     scene amiheadpathub
