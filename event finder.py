@@ -219,7 +219,8 @@ class Console:
 
 
     def search_event_name(self):
-        print("\nPlease enter the event name you wish to search for.")
+        print("\nPlease enter the event name. (example: 'beachmas19')")
+        print("To go back type 'exit'.")
         name = input("> ")
         if name == "exit":
             self.app()
@@ -231,7 +232,8 @@ class Console:
                         print_event_info(event)
 
     def search_for_dialogue(self):
-        print("\nPlease enter the dialogue you wish to search for.")
+        print("\nPlease enter the dialogue you wish to search for (example: 'You're disgusting').")
+        print("To go back type 'exit'.")
         diag = input("> ")
         if diag == "exit":
             self.app()
@@ -249,13 +251,15 @@ class Console:
 
     def search_advanced_dialogue(self, search, dialogue):
         if search:
-          print("\nPlease enter the dialogue you wish to search for.")
-          diag = input("> ")
-          if diag == "exit":
-              self.app()
+            print("\nPlease enter the dialogue you wish to search for (example: 'You're disgusting').")
+            print("To go back type 'exit'.")
+            diag = input("> ")
+            if diag == "exit":
+                self.app()
         else:
             diag = dialogue
-        print("Please enter the character you wish to search for.")
+        print("Please enter the character you wish to search for (example 'ami')")
+        print("To go back type 'exit'.")
         chara = input("> ").lower()
         if chara == "exit":
             self.search_advanced_dialogue(True, "")
@@ -359,7 +363,8 @@ class Console:
             print("Not yet supported. Use the Java version instead.")
 
     def characters_in_event(self):
-        print("Please enter the character you wish to search for: ")
+        print("Please enter the character you wish to search for (example: 'ami')")
+        print("To go back type 'exit'.")
         chara = input("> ")
         if chara.lower() == "exit":
             self.app()
@@ -508,22 +513,22 @@ class RenFile:
         count = 0
         event = 0
         for line in filer:
-           count = count + 1
-           # Removes excessive white spaces
-           line = re.sub("\s\s+", " ", line)
-           line = line.strip()
-           if line.startswith("label "):
-               event_name = line.replace("label ", "").replace(":", "")
-               event_name = event_name.strip()
-               event = Event(event_name, self.name, count)
-               self.events.append(event)
-           elif line.startswith("jump"):
-               if event != 0:
-                   event.add_line(line)
-               event = 0
-           else:
-               if event != 0:
-                   event.add_line(line)
+            count = count + 1
+            # Removes excessive white spaces
+            line = re.sub("\s\s+", " ", line)
+            line = line.strip()
+            if line.startswith("label "):
+                event_name = line.replace("label ", "").replace(":", "")
+                event_name = event_name.strip()
+                event = Event(event_name, self.name, count)
+                self.events.append(event)
+            elif line.startswith("jump"):
+                if event != 0:
+                    event.add_line(line)
+                event = 0
+            else:
+                if event != 0:
+                    event.add_line(line)
 
     def get_events(self):
         return self.events
